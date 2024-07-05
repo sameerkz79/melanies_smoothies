@@ -4,9 +4,6 @@ import streamlit as st
 from snowflake.snowpark.functions import col
 #new section to display fruityvice nutrition information
 
-import requests 
-fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
-st.text(fruityvice_response)
 
 
 # Write directly to the app
@@ -36,6 +33,10 @@ my_dataframe = session.table("smoothies.public.fruit_options").select(col('FRUIT
 ingredients_list = st.multiselect(
     "choose upto 5 ingredients:",
     my_dataframe,max_selections=5)
+
+import requests 
+fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
+st.text(fruityvice_response.json())
 
 if ingredients_list:
     #st.write(ingredients_list)
