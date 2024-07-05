@@ -4,6 +4,7 @@ import streamlit as st
 from snowflake.snowpark.functions import col
 #new section to display fruityvice nutrition information
 import requests 
+import pandas as pd
 
 
 
